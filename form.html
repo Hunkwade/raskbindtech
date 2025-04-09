@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Contact Us - Responsive Page Design</title>
+    <link rel="shortcut icon" type="image/jpg" href="images/icon.png"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+    </style>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <section>
+            <div class="container">
+                <div class="contactInfo"> 
+                    <div>
+                        <h2>Contact Info</h2>
+                        <ul class="info">
+                            <li>
+                                <span><img src="images/location.png"></span>
+                                <span>Ashok Nagar<br>
+                                    Benguluru<br>
+                                    11472</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span><img src="images/mail.png"></span>
+                                <!-- <span>nassosanagn@gmail.com</span> -->
+                                <span><a href = "mailto: nassosanagn@gmail.com">raskbindtech@gmail.com</a></span>
+                            </li>
+                            <li>
+                                <span><img src="images/call.png"></span>
+                                <span>+91 75491 13544</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <ul class="sci">
+                        <li><a href=""><img src="images/1.png"></a></li>
+                        <li><a href=""><img src="images/3.png"></a></li>
+                        <li><a href=""><img src="images/2.png"></a></li>
+                        <li><a href=""><img src="images/5.png"></a></li>
+                        
+                    </ul>
+                </div>
+                <form name="submit-to-google-sheet" action="">
+                <div class="contactForm">
+                    <h2>Send a Message</h2>
+                    <!-- Using <form> tag to wrap the input fields -->
+                    <form name="submit-to-google-sheet">
+                      <div class="formBox">
+                        <div class="inputBox w50">
+                          <input type="text" name="firstName" required>
+                          <span>First Name</span>
+                        </div>
+                        <div class="inputBox w50">
+                          <input type="text" name="lastName" required>
+                          <span>Last Name</span>
+                        </div>
+                        <div class="inputBox w50">
+                          <input type="email" name="email" required>
+                          <span>Email Address</span>
+                        </div>
+                        <div class="inputBox w50">
+                          <input type="text" name="mobileNumber" required>
+                          <span>Mobile Number</span>
+                        </div>
+                        <div class="inputBox w100">
+                          <textarea name="message" required></textarea>
+                          <span>Write your message here...</span>
+                        </div>
+                        <div class="inputBox w100">
+                          <input type="submit" value="Send">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </form>
+
+                  <div class="loading-spinner"></div>
+
+                  <style>
+                    .loading-spinner {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+                  </style>
+
+                  <script>
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwsWrmoSPd-aGVZGyKv3UtXJ6tKYrj208ayGyIY6hKbmr-1acqhOrUstHLaAHLQi26i/exec'
+                 
+                const form = document.forms['submit-to-google-sheet'];
+                const spinner = document.querySelector('.loading-spinner');
+                
+                form.addEventListener('submit', e => {
+                e.preventDefault();
+                form.classList.add('loading');
+                spinner.style.display = 'block';
+                fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                  if (response.ok) {
+                    window.location.href = "index.html";
+                  }
+                })
+                .catch(error => {
+                  alert("Submission failed. Please try again later.");
+                  console.error('Error:', error);
+                })
+                .finally(() => {
+                  form.classList.remove('loading');
+                  spinner.style.display = 'none';
+                });
+                })
+              
+                  </script>
+                    
+        </section>
+    </body>
+</html>

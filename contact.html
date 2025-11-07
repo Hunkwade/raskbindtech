@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Raskbind Tech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+    <div class="page">
+        <aside class="page__sidebar">
+            <div>
+                <a href="index.html" class="brand">Raskbind Tech</a>
+                <p class="brand__tagline">Precision engineered platforms from India for global scale.</p>
+            </div>
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+            <nav class="nav" id="primary-navigation">
+                <a class="nav__link" href="index.html">Home</a>
+                <a class="nav__link" href="services.html">Services</a>
+                <a class="nav__link" href="about.html">About</a>
+                <a class="nav__link" href="contact.html">Contact</a>
+            </nav>
+            <div class="sidebar__footer">
+                <span>HQ Bengaluru, India</span>
+                <span>Led by Rahul Sharma</span>
+            </div>
+        </aside>
+
+        <main class="page__main">
+            <section class="section">
+                <div class="section__header">
+                    <h1 class="section__title">Engage</h1>
+                    <p class="section__subtitle">Share your mission and we’ll align a specialist team within 48 hours.</p>
+                </div>
+                <form class="contact-form" action="#" method="POST" data-gs-endpoint="https://script.google.com/macros/s/AKfycbz7hF2n2tXwy9zKxucFaBs4hDWEGDhKWCYhjm0QkPLm0LQnPK3Md6AqTvOQElZguGx25w/exec">
+                    <input type="hidden" name="_subject" value="Raskbind Tech — New Project Inquiry">
+                    <div class="contact-form__row">
+                        <div class="contact-form__field">
+                            <label for="name">Name</label>
+                            <input id="name" name="name" type="text" required>
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" required>
+                        </div>
+                    </div>
+                    <div class="contact-form__row">
+                        <div class="contact-form__field">
+                            <label for="company">Company</label>
+                            <input id="company" name="company" type="text">
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="timeline">Timeline</label>
+                            <input id="timeline" name="timeline" type="text" placeholder="e.g. Q1 launch">
+                        </div>
+                    </div>
+                    <div class="contact-form__row">
+                        <div class="contact-form__field">
+                            <label for="services">Services Needed</label>
+                            <select id="services" name="services" required>
+                                <option value="" disabled selected>Select primary service</option>
+                                <option value="design">Software &amp; Web Design</option>
+                                <option value="development">Development &amp; Engineering</option>
+                                <option value="management">Lifecycle Management</option>
+                                <option value="invention">Innovation &amp; Future Tech</option>
+                                <option value="blueprint">Startup/Blueprint Advisory</option>
+                                <option value="other">Other / Not Listed</option>
+                            </select>
+                        </div>
+                        <div class="contact-form__field">
+                            <label for="budget">Estimated Budget (INR)</label>
+                            <select id="budget" name="budget" required>
+                                <option value="" disabled selected>Select range</option>
+                                <option value="1.2-5L">₹1,20,000 – ₹5,00,000</option>
+                                <option value="5-15L">₹5,00,000 – ₹15,00,000</option>
+                                <option value="15-40L">₹15,00,000 – ₹40,00,000</option>
+                                <option value="40-75L">₹40,00,000 – ₹75,00,000</option>
+                                <option value="75L-1Cr">₹75,00,000 – ₹1,00,00,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="message">Mission Outline</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit">Transmit Brief</button>
+                    <p class="form-status" data-form-status></p>
+                </form>
+            </section>
+
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title">Direct Channels</h2>
+                    <p class="section__subtitle">Immediate escalation paths for critical initiatives.</p>
+                </div>
+                <div class="stacked-list">
+                    <div class="stacked-list__item">
+                        <span class="stacked-list__label">Command Desk</span>
+                        <p class="stacked-list__content">raskbindtech@gmail.com</p>
+                        <span class="stacked-list__meta">Response under 2h</span>
+                    </div>
+                    <div class="stacked-list__item">
+                        <span class="stacked-list__label">India</span>
+                        <p class="stacked-list__content">+91 75491 13544</p>
+                        <span class="stacked-list__meta">Bengaluru, India</span>
+                    </div>
+                    <div class="stacked-list__item">
+                        <span class="stacked-list__label">Global Liaison</span>
+                        <p class="stacked-list__content">Rahul Sharma · CEO</p>
+                        <span class="stacked-list__meta">Available on request</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>© Raskbind Tech 2025 · Bengaluru, India</span>
+                <div class="footer__social">
+                    <a href="mailto:raskbindtech@gmail.com">Email</a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
+

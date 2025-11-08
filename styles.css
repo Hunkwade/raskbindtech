@@ -90,8 +90,7 @@ img {
     line-height: 1;
 }
 
-.brand::after {
-    content: " X";
+.brand__accent {
     color: var(--accent);
 }
 

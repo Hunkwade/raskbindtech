@@ -2,6 +2,7 @@
 :root {
     --white: #ffffff;
     --black: #050505;
+    --accent: #ff6b00;
     --text-size-base: 14px;
 }
 
@@ -89,6 +90,11 @@ img {
     line-height: 1;
 }
 
+.brand::after {
+    content: " X";
+    color: var(--accent);
+}
+
 .brand__tagline {
     margin-top: 16px;
     font-size: 12px;
@@ -117,7 +123,7 @@ img {
     content: "";
     width: 48px;
     height: 1px;
-    background: var(--white);
+    background: var(--accent);
     opacity: 0;
     transform: scaleX(0.2);
     transform-origin: left;
@@ -136,6 +142,16 @@ img {
 .nav__link:focus::before {
     opacity: 1;
     transform: scaleX(1);
+    animation: nav-glow 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes nav-glow {
+    0% {
+        filter: drop-shadow(0 0 0 rgba(255, 107, 0, 0.0));
+    }
+    100% {
+        filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.8));
+    }
 }
 
 .nav {
@@ -242,7 +258,8 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.28em;
     font-size: 12px;
-    opacity: 0.7;
+    opacity: 0.85;
+    color: var(--accent);
 }
 
 .card__title {
@@ -285,8 +302,9 @@ img {
     letter-spacing: 0.28em;
     font-size: 11px;
     padding: 6px 18px;
-    border: 1px solid var(--black);
-    background: var(--white);
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--white);
 }
 
 .hero__copy {
@@ -330,6 +348,7 @@ img {
     border: 1px solid var(--black);
     background: var(--black);
     color: var(--white);
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .hero__cta--primary::after {
@@ -338,6 +357,12 @@ img {
 
 .hero__cta--secondary {
     padding-bottom: 4px;
+}
+
+.hero__cta--primary:hover,
+.hero__cta--primary:focus {
+    opacity: 0.85;
+    transform: translateY(-1px);
 }
 
 .hero__actions {
@@ -364,6 +389,7 @@ img {
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-size: clamp(15px, 0.9vw + 0.6rem, 22px);
+    color: var(--accent);
 }
 
 .hero__stat-label {
@@ -419,7 +445,7 @@ img {
 .cta-row__divider {
     width: 120px;
     height: 1px;
-    background: var(--black);
+    background: var(--accent);
 }
 
 .stacked-list {

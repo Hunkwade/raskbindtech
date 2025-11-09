@@ -33,13 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const contactForm = document.querySelector(".contact-form");
-    if (contactForm) {
-        const endpoint = contactForm.dataset.gsEndpoint;
-        const statusEl = contactForm.querySelector("[data-form-status]");
-        const submitButton = contactForm.querySelector("button[type='submit']");
+    const forms = document.querySelectorAll("form[data-gs-endpoint]");
+    forms.forEach((form) => {
+        const endpoint = form.dataset.gsEndpoint;
+        const statusEl = form.querySelector("[data-form-status]");
+        const submitButton = form.querySelector("button[type='submit']");
 
-        contactForm.addEventListener("submit", async (event) => {
+        form.addEventListener("submit", async (event) => {
             if (!endpoint) {
                 return;
             }
@@ -47,15 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
             event.preventDefault();
 
             if (endpoint.includes("YOUR_SCRIPT_ID")) {
-                statusEl.textContent = "Update the Google Apps Script endpoint before submitting.";
-                statusEl.dataset.status = "error";
+                if (statusEl) {
+                    statusEl.textContent = "Update the Google Apps Script endpoint before submitting.";
+                    statusEl.dataset.status = "error";
+                }
                 return;
             }
 
-            const formData = new FormData(contactForm);
-            statusEl.textContent = "Transmitting…";
-            statusEl.dataset.status = "pending";
-            submitButton.disabled = true;
+            const formData = new FormData(form);
+            if (statusEl) {
+                statusEl.textContent = "Transmitting…";
+                statusEl.dataset.status = "pending";
+            }
+            if (submitButton) {
+                submitButton.disabled = true;
+            }
 
             try {
                 const response = await fetch(endpoint, {
@@ -67,17 +73,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     throw new Error(`Request failed with status ${response.status}`);
                 }
 
-                statusEl.textContent = "Thank you. Your brief reached our command desk.";
-                statusEl.dataset.status = "success";
-                contactForm.reset();
+                if (statusEl) {
+                    statusEl.textContent = "Thank you. We’ll respond shortly.";
+                    statusEl.dataset.status = "success";
+                }
+                form.reset();
             } catch (error) {
-                statusEl.textContent = "Unable to transmit. Please retry or email raskbindtech@gmail.com.";
-                statusEl.dataset.status = "error";
+                if (statusEl) {
+                    statusEl.textContent = "Unable to transmit. Please retry or email raskbindx@gmail.com.";
+                    statusEl.dataset.status = "error";
+                }
                 console.error("Form submission error", error);
             } finally {
-                submitButton.disabled = false;
+                if (submitButton) {
+                    submitButton.disabled = false;
+                }
             }
         });
-    }
+    });
 });
 

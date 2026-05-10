@@ -91,5 +91,48 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    const videoToggles = document.querySelectorAll("[data-video-toggle]");
+    videoToggles.forEach((toggle) => {
+        const frame = toggle.closest(".video-card__frame");
+        const video = frame?.querySelector("video");
+        if (!video) {
+            return;
+        }
+
+        const syncToggleLabel = () => {
+            const isMuted = video.muted;
+            toggle.textContent = isMuted ? "Unmute" : "Mute";
+            toggle.setAttribute("aria-pressed", isMuted ? "false" : "true");
+        };
+
+        syncToggleLabel();
+        toggle.addEventListener("click", () => {
+            video.muted = !video.muted;
+            syncToggleLabel();
+        });
+    });
+
+    const slider = document.querySelector("[data-video-slider]");
+    const prevBtn = document.querySelector("[data-slider-prev]");
+    const nextBtn = document.querySelector("[data-slider-next]");
+    if (slider && prevBtn && nextBtn) {
+        const getStep = () => {
+            const firstCard = slider.querySelector(".video-card");
+            if (!firstCard) {
+                return slider.clientWidth * 0.85;
+            }
+            const gap = parseFloat(window.getComputedStyle(slider).columnGap || "20");
+            return firstCard.getBoundingClientRect().width + gap;
+        };
+
+        prevBtn.addEventListener("click", () => {
+            slider.scrollBy({ left: -getStep(), behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            slider.scrollBy({ left: getStep(), behavior: "smooth" });
+        });
+    }
 });
 

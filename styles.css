@@ -148,6 +148,7 @@ img {
     0% {
         filter: drop-shadow(0 0 0 rgba(255, 107, 0, 0.0));
     }
+
     100% {
         filter: drop-shadow(0 0 6px rgba(255, 107, 0, 0.8));
     }
@@ -191,7 +192,7 @@ img {
     gap: 28px;
 }
 
-.section + .section {
+.section+.section {
     border-top: 1px solid var(--black);
     padding-top: clamp(48px, 9vw, 104px);
 }
@@ -269,6 +270,7 @@ img {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-55%);
     }
@@ -1162,6 +1164,7 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -1169,4 +1172,3 @@ img {
         animation: none !important;
     }
 }
-
